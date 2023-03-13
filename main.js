@@ -74,7 +74,7 @@ function getProductData() {
     }
 }
 getProductData();
-BuyIt();
+addProductToCard();
 // ---------------------------------------------
 function displayAllProducts(products) {
     const productBox = document.createElement("div");
@@ -108,7 +108,7 @@ btnQuickView.forEach((btn, index) => {
 // ---------------------------------------------
 const createQuickView = (product) => {
     divQuickView.setAttribute("style", `--i: ${product.bgColor}`);
-    divQuickView.style.display = "flex";
+    divQuickView.classList.add("active");
     divQuickView.innerHTML = `
     <div class="close">
                 <span class="material-symbols-outlined"> close </span>
@@ -153,13 +153,13 @@ const createQuickView = (product) => {
         ".quick-view-product .close"
     );
     btnQuickViewClose.addEventListener("click", () => {
-        divQuickView.style.display = "none";
+        divQuickView.classList.remove("active");
     });
 
     const btnAddToCard = document.querySelector(".details-product button");
     btnAddToCard.addEventListener("click", () => {
         product.addToCard = true;
-        BuyIt();
+        addProductToCard();
     });
 };
 // ---------------------------------------------
@@ -175,11 +175,11 @@ const btnAddToCard = document.querySelectorAll(".all-products .product button");
 btnAddToCard.forEach((btn, index) => {
     btn.addEventListener("click", () => {
         products[index].addToCard = true;
-        BuyIt();
+        addProductToCard();
     });
 });
 // ---------------------------------------------
-function BuyIt() {
+function addProductToCard() {
     productsInCard = [];
     products.forEach((p) => {
         if (p.addToCard === true) {
@@ -223,7 +223,7 @@ function showProductsInCard() {
             btn.addEventListener("click", (e) => {
                 const numId = +btn.parentElement.id;
                 products[numId - 1].addToCard = false;
-                BuyIt();
+                addProductToCard();
             });
         });
     });

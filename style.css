@@ -202,10 +202,13 @@ nav .data .card .num-of-item {
     -webkit-backdrop-filter: blur(18.5px);
     border-radius: 1rem;
     border: 1px solid rgba(255, 255, 255, 0.18);
-    display: flex;
-    flex-wrap: wrap;
     display: none;
+    flex-wrap: wrap;
     overflow: hidden;
+}
+
+.quick-view-product.active{
+    display: flex;
 }
 
 .quick-view-product .images-product {
@@ -430,6 +433,7 @@ nav .card-dropdown .details button:hover {
         height: 50%;
         padding: 1rem;
         margin-top: 0;
+        padding-top: 2rem;
     }
     .quick-view-product .details-product .size {
         width: 100%;
